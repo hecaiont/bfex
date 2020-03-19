@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+# brew model
+class Brew(models.Model):
+    name = models.CharField(max_length=200)
+    brew_date = models.DateTimeField('date published')
+
