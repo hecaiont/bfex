@@ -3,10 +3,11 @@ from django.db import models
 # brew model
 class Brew(models.Model):
     
-    brew_name = models.CharField(primary_key=True ,max_length=100)
+    brew_name = models.CharField(default='untitled work', max_length=100)
     brew_date = models.DateTimeField(auto_now_add=True)
-    brew_description = models.TextField(verbose_name='내용')
+    brew_description = models.TextField(verbose_name='내용', default='설명을 입력하세요.')
     
+
     def doBrew(self, total_water, total_rice, total_stage):
         self.total_water = total_water
         self.total_rice = total_rice
@@ -21,14 +22,14 @@ class Brew(models.Model):
 class stage(models.Model):
     stage_date = models.DateTimeField(auto_now_add=True)
 
-    stage_order = models.IntegerField(max_length=10)
+    stage_order = models.FloatField(null=True)
     stage_type = models.CharField(max_length=100)
 
     water = models.FloatField(null=True)
     rice = models.FloatField(null=True)
     yeast = models.FloatField(null=True)
     additive = models.FloatField(null=True)
-    description = models.TextField(verbose_name='내용')
+    description = models.TextField(verbose_name='내용 ', default='설명을 입력하세요.')
 
     def doStage(self, stage_order, stage_type, water, rice, yeast, additive, description):
         self.rice = water
@@ -41,19 +42,19 @@ class stage(models.Model):
 # class water(models.Model):
 #     water_name = models.CharField(max_length=100)
 #     water_amount = models.FloatField(null=True)
-#     water_description = models.TextField(verbose_name='내용')
+#     water_description = models.TextField(verbose_name='내용 ', default='설명을 입력하세요.')
 
 # class rice(models.Model):
 #     rice_name = models.CharField(max_length=100)
 #     rice_amount = models.FloatField(null=True)
-#     rice_description = models.TextField(verbose_name='내용')
+#     rice_description = models.TextField(verbose_name='내용  ', default='설명을 입력하세요.')
 
 # class yeast(models.Model):
 #     yeast_name = models.CharField(max_length=100)
 #     yeast_amount = models.FloatField(null=True)
-#     yeast_description = models.TextField(verbose_name='내용')
+#     yeast_description = models.TextField(verbose_name='내용 ', default='설명을 입력하세요.')
 
 # class additive(models.Model):
 #     additive_name = models.CharField(max_length=100)
 #     additive_amount = models.FloatField(null=True)
-#     additive_description = models.TextField(verbose_name='내용')
+#     additive_description = models.TextField(verbose_name='내용  ', default='설명을 입력하세요.')
